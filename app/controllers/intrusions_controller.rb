@@ -8,13 +8,13 @@ class IntrusionsController < ApplicationController
     if params[:intrusion][:description].present?
       redirect_to Intrusion.create intrusion_params
     else
-      @intrusion = Intrusion.new
+      new_intrusion
       render :new, locals: { errorMsg: 'Description cannot be empty' }
     end
   end
   
   def new
-    @intrusion = Intrusion.new
+    new_intrusion
   end
   
   def show
@@ -22,7 +22,12 @@ class IntrusionsController < ApplicationController
   end
   
   private
-    def intrusion_params
-      params.require(:intrusion).permit(:description)
-    end
+  
+  def new_intrusion
+    @intrusion = Intrusion.new  
+  end
+  
+  def intrusion_params
+    params.require(:intrusion).permit(:description)
+  end
 end
