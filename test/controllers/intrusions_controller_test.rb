@@ -8,10 +8,11 @@ class IntrusionsControllerTest < ActionController::TestCase
   
   test ':create creates a new intrusion' do
     testDesripton = "eoseufnisenc"
-    post :create, intrusion: { description: testDescription }
+    intrusion = intrusion.new
+    intrusion.description = testDescription
+    post :create, intrusion
     
-    intrusion = Intrusion.find_by(description: testDescription)
-    assert_not_nil intrusion, "no intrusion found with the test description"
+    assert_not_nil Intrusion.find(intrusion.id), "new intrusion not found"
   end
   
   test 'does not create a new intrusion with nil description' do
@@ -19,10 +20,9 @@ class IntrusionsControllerTest < ActionController::TestCase
     assert_not intrusion.save, "the intrusion was saved"
   end
   
-  #Figure out what to add here
   test ':new things' do
-    #Implement this
-    assert true
+    get :new
+    assert_not_nil assigns(:intrusion), "new intrusion not present"
   end
   
   test ':edit sets @intrusion to the correct intrusion' do
