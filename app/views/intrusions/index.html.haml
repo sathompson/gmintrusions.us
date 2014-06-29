@@ -1,5 +1,5 @@
 %ul
   - @intrusions.each do |intrusion|
-    %li= "#{intrusion.description} - #{intrusion.id}"
+    %li= link_to intrusion_details(intrusion), intrusion
 
 = link_to "new intrusion", new_intrusion_path
