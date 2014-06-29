@@ -1,3 +1,5 @@
+- if local_assigns[:errorMsg]
+  .err= errorMsg
 = form_for @intrusion, url: {action: "create"} do |f|
   = f.label :description
   = f.text_field :description
