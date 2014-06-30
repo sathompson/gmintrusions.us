@@ -46,28 +46,18 @@ class IntrusionsControllerTest < ActionController::TestCase
     assert_equal intrusion, assigns(:intrusion), "the wrong intrusion is displayed"
   end
   
-  test 'patch :update updates the correct intrusion' do
-    testDescription = "weoindsuc"
-    intrusion = Intrusion.new
-    intrusion.description = testDescription
-    intrusion.save
-    
-    testUpdatedDescription = "hskurncusn"
-    patch :update, id: intrusion.id, intrusion: { id: intrusion, description: testUpdatedDescription }
-    assert_equal intrusion, assigns(:intrusion), "the wrong intrusion is displayed"
-    assert_equal testUpdatedDescription, assigns(:intrusion).description, "intrusion does not have the updated description"
-  end
-  
-  test 'put :update updates the correct intrusion' do
-    testDescription = "ybcnoiweo"
-    intrusion = Intrusion.new
-    intrusion.description = testDescription
-    intrusion.save
-    
-    testUpdatedDescription = "yuiosdhjk"
-    put :update, id: intrusion.id, intrusion: { id: intrusion, description: testUpdatedDescription }
-    assert_equal intrusion, assigns(:intrusion), "the wrong intrusion is displayed"
-    assert_equal testUpdatedDescription, assigns(:intrusion).description, "intrusion does not have the updated description"
+  test ':update updates the correct intrusion' do
+    [:patch, :put].each do |http_method|
+      testDescription = "weoindsuc"
+      intrusion = Intrusion.new
+      intrusion.description = testDescription
+      intrusion.save
+
+      testUpdatedDescription = "hskurncusn"
+      self.send(http_method, :update, id: intrusion.id, intrusion: { id: intrusion, description: testUpdatedDescription })
+      assert_equal intrusion, assigns(:intrusion), "the wrong intrusion is displayed"
+      assert_equal testUpdatedDescription, assigns(:intrusion).description, "intrusion does not have the updated description"
+    end
   end
   
   test ':destroy destroys the correct intrusion' do
