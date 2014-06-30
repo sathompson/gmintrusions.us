@@ -1,2 +1,4 @@
 %div= intrusion_details @intrusion
-= link_to 'edit', edit_intrusion_path
+%ul
+  %li= link_to 'edit', edit_intrusion_path
+  %li= link_to 'delete', @intrusion, method: :delete

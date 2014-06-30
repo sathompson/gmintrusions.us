@@ -70,13 +70,13 @@ class IntrusionsControllerTest < ActionController::TestCase
   end
   
   test ':destroy destroys the correct intrusion' do
-    skip
     testDescription = 'jpionftygubhjkn'
     intrusion = Intrusion.new
     intrusion.description = testDescription
     intrusion.save
     
     delete :destroy, id: intrusion.id
-    assert_nil Intrusion.find(intrusion.id), 'the intrusion was not deleted'
+    assert_empty Intrusion.where(id: intrusion.id),
+      'the intrusion was not deleted'
   end
 end

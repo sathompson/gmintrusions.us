@@ -1,6 +1,6 @@
 class IntrusionsController < ApplicationController
 
-  before_filter :find_intrusion, only: [:show, :edit, :update]
+  before_filter :find_intrusion, only: [:show, :edit, :update, :destroy]
   
   def index
     @intrusions = Intrusion.all.sort
@@ -35,6 +35,11 @@ class IntrusionsController < ApplicationController
     else
       render_with_error :edit, 'Description cannot be empty'
     end
+  end
+  
+  def destroy
+    @intrusion.destroy
+    redirect_to :intrusions
   end
   
   private
