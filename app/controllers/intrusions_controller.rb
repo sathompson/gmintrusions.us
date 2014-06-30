@@ -42,6 +42,10 @@ class IntrusionsController < ApplicationController
     redirect_to :intrusions
   end
   
+  def search
+    redirect_to root_path
+  end
+  
   private
   
   def render_with_error(action, error_msg)

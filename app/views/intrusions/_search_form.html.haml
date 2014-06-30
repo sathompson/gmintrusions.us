@@ -1,0 +1,9 @@
+.row
+  %div{class: 'small-12 large-10 large-centered columns'}
+    = form_tag({controller: 'intrusions', action: 'search'}, {method: 'get'}) do
+      %div{class: 'row collapse'}
+        %div{class: 'small-11 columns'}
+          = text_field_tag :q, nil, tabindex: 1,
+            placeholder: 'Tags, Description, Author...'
+        %div{class: 'small-1 columns'}
+          = submit_tag 'Search', class: 'button radius postfix', tabindex: 2

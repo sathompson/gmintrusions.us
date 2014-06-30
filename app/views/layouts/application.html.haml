@@ -12,7 +12,39 @@
     = csrf_meta_tag
 
   %body
-    %nav= link_to 'index', intrusions_path
+    %nav.top-bar{:'data-options' => 'is_hover: false'}
+      %ul.title-area
+        %li.name
+          %h1= link_to 'GMIntrusions.us', root_path
+      %section.top-bar-section
+        %ul.right
+          %li= link_to 'New Intrusion', new_intrusion_path
+      %section.top-bar-section
+        %ul.left
+          %li= link_to 'About', '#'
+          %li= link_to 'Contact Us', '#'
+    
+    - if @error_msg
+      - if @error_msg.respond_to? 'each'
+        - @error_msg.each do |msg|
+          %div{class: 'alert-box alert radius'}= msg
+      - else
+        %div{class: 'alert-box alert radius'}= @error_msg
+    
+    - if @warning_msg
+      - if @warning_msg.respond_to? 'each'
+        - @warning_msg.each do |msg|
+          %div{class: 'alert-box warning radius'}= msg
+      - else
+        %div{class: 'alert-box warning radius'}= @warning_msg
+    
+    - if @success_msg
+      - if @success_msg.respond_to? 'each'
+        - @success_msg.each do |msg|
+          %div{class: 'alert-box success radius'}= msg
+      - else
+        %div{class: 'alert-box success radius'}= @success_msg
+    
     
     = yield
 

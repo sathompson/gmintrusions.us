@@ -1,5 +1,14 @@
-%ul
+= render partial: 'search_form'
+.row
+  %div{class: 'small-12 columns small-link-div'}
+    = link_to 'New Intrusion', new_intrusion_path, class: 'small-link'
   - @intrusions.each do |intrusion|
-    %li= link_to intrusion_details(intrusion), intrusion
-
-= link_to "new intrusion", new_intrusion_path
+    %div{class: 'small-12 columns top-border'}
+    %div{class: 'small-12 large-10 columns'}
+      %p= intrusion.description
+    %div{class: 'small-12 large-2 columns'}
+      %ul.inline-list
+        %li= link_to 'edit', edit_intrusion_path(intrusion.id)
+        %li= link_to 'delete', intrusion, method: :delete
+  %div{class: 'small-12 columns small-link-div top-border'}
+    = link_to 'New Intrusion', new_intrusion_path, class: 'small-link'
