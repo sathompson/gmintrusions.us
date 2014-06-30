@@ -1,30 +1,51 @@
 class IntrusionsController < ApplicationController
 
+  before_filter :find_intrusion, only: [:show, :edit, :update]
+  
   def index
     @intrusions = Intrusion.all.sort
+  end
+  
+  def new
+    @intrusion = Intrusion.new
+    @form_action = 'create'
   end
   
   def create
     if params[:intrusion][:description].present?
       redirect_to Intrusion.create intrusion_params
     else
-      new_intrusion
-      render :new, locals: { errorMsg: 'Description cannot be empty' }
+      @intrusion = Intrusion.new
+      render_with_error :new, 'Description cannot be empty'
     end
   end
   
-  def new
-    new_intrusion
+  def show
+    
   end
   
-  def show
-    @intrusion = Intrusion.find(params[:id])
+  def edit
+    @form_action = 'update'
+  end
+  
+  def update
+    if params[:intrusion][:description].present?
+      @intrusion.update intrusion_params
+      redirect_to @intrusion
+    else
+      render_with_error :edit, 'Description cannot be empty'
+    end
   end
   
   private
   
-  def new_intrusion
-    @intrusion = Intrusion.new  
+  def render_with_error(action, error_msg)
+    @error_msg = error_msg
+    render action
+  end
+  
+  def find_intrusion
+    @intrusion = Intrusion.find(params[:id])
   end
   
   def intrusion_params

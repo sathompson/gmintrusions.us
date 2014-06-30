@@ -1,0 +1,6 @@
+- if @error_msg
+  .err= @error_msg
+= form_for @intrusion, url: {action: @form_action} do |f|
+  = f.label :description
+  = f.text_field :description
+  = f.submit 'Submit'
