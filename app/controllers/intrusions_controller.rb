@@ -43,7 +43,11 @@ class IntrusionsController < ApplicationController
   end
   
   def search
-    redirect_to root_path
+    if params[:q].present?
+      @intrusions = Intrusion.search params[:q]
+    else
+      render_with_error :index, 'Search query not present'
+    end
   end
   
   private

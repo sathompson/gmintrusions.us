@@ -18,6 +18,7 @@ gem 'haml'
 gem 'pry'
 gem 'foundation-rails'
 gem 'faker'
+gem 'searchkick'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
