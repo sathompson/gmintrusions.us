@@ -61,7 +61,7 @@ class IntrusionsControllerTest < ActionController::TestCase
 
       testUpdatedDescription = 'hskurncusn'
       self.send(http_method, :update, id: intrusion.id,
-        intrusion: { id: intrusion, description: testUpdatedDescription })
+        intrusion: { id: intrusion.id, description: testUpdatedDescription })
       assert_equal intrusion, assigns(:intrusion),
         'the wrong intrusion is displayed'
       assert_equal testUpdatedDescription, assigns(:intrusion).description,
