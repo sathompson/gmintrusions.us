@@ -20,8 +20,11 @@ nav.top-bar {
   margin-bottom: 1em;
 }
 
-div.top-border {
+div.spacer {
   border-top: 1px solid black;
+  height: 0;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 textarea {
@@ -34,14 +37,22 @@ textarea {
 
 .small-link {
   font-size: 75%;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .small-link-div {
   text-align: right;
-  padding-bottom: 1em;
-  padding-top: 0.5em;
 }
 
 .no-margin {
   margin: 0;
+}
+
+.link-panel {
+  color: inherit;
+}
+
+.link-panel:hover {
+  color: inherit;
 }

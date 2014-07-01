@@ -1,6 +1,6 @@
 .row
   %div{class: 'small-12 large-10 large-centered columns'}
-    %p.panel= @intrusion.description
+    %p{class: 'panel radius'}= @intrusion.description
     .align-right
       = link_to 'Edit', edit_intrusion_path(@intrusion.id),
         tabindex: 1, class: 'button tiny radius no-margin'

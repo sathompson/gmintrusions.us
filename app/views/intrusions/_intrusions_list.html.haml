@@ -2,12 +2,14 @@
   %div{class: 'small-12 columns small-link-div'}
     = link_to 'New Intrusion', new_intrusion_path, class: 'small-link'
   - @intrusions.each do |intrusion|
-    %div{class: 'small-12 columns top-border'}
+    %div{class: 'small-12 columns spacer'}
     %div{class: 'small-12 large-10 columns'}
-      %p= intrusion.description
+      = link_to intrusion, class: 'link-panel' do
+        %p{class: 'panel radius'}= intrusion.description
     %div{class: 'small-12 large-2 columns'}
       %ul.inline-list
         %li= link_to 'edit', edit_intrusion_path(intrusion.id)
         %li= link_to 'delete', intrusion, method: :delete
-  %div{class: 'small-12 columns small-link-div top-border'}
+  %div{class: 'small-12 columns spacer'}
+  %div{class: 'small-12 columns small-link-div'}
     = link_to 'New Intrusion', new_intrusion_path, class: 'small-link'
