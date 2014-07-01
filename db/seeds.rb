@@ -9,3 +9,7 @@
 100.times do
   Intrusion.create(description: Faker::Lorem.paragraph(2))
 end
+
+100.times do
+  Tag.create(name: Faker::Lorem.word)
+end
