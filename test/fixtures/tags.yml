@@ -1,7 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+employsMagnetism:
+  name: Employs Magnetism
 
-two:
-  name: MyString
+entertains:
+  name: Entertains
+
+leads:
+  name: Leads
