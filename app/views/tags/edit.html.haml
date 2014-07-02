@@ -1,0 +1,6 @@
+= render partial: 'tags_form'
+.row
+  %div{class: 'small-12 large-10 large-centered columns'}
+    .small-link-div
+      = link_to 'delete', @tag, method: :delete,
+        tabindex: 3, class: 'small-link'

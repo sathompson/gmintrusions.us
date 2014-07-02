@@ -1,6 +1,8 @@
 class TagsController < ApplicationController
+  before_filter :find_tag, only: [:show, :edit, :update]
   
-  before_filter :find_tag, only: [:show]
+  ERR_EMPTY_NAME = 'Name cannot be empty.'
+  ERR_UNKNOWN = 'Something went wrong.'
   
   def index
     @tags = Tag.order :name
@@ -16,12 +18,28 @@ class TagsController < ApplicationController
       redirect_to Tag.create tag_params
     else
       @tag = Tag.new
-      render_with_error :new, 'Name cannot be empty.'
+      render_with_error :new, ERR_EMPTY_NAME
     end
   end
   
   def show
     
+  end
+  
+  def edit
+    @form_action = :edit
+  end
+  
+  def update
+    if params[:tag][:name].present?
+      if @tag.update tag_params
+        redirect_to @tag
+      else
+        render_with_error :edit, ERR_UNKNOWN
+      end
+    else
+      render_with_error :edit, ERR_EMPTY_NAME
+    end
   end
   
   private

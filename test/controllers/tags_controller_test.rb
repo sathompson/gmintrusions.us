@@ -61,7 +61,7 @@ class TagsControllerTest < ActionController::TestCase
 
       testUpdatedName = Faker::Lorem.word
       self.send(http_method, :update, id: tag.id,
-        tag: { id: tag.id, description: testUpdatedName })
+        tag: { id: tag.id, name: testUpdatedName })
       assert_equal tag, assigns(:tag),
         'the wrong tag is displayed'
       assert_equal testUpdatedName, assigns(:tag).name,
