@@ -1,6 +1,12 @@
 = render partial: 'intrusions_form'
+- tabindex = 2
 .row
   %div{class: 'small-12 large-10 large-centered columns'}
     .small-link-div
       = link_to 'delete', @intrusion, method: :delete,
-        tabindex: 3, class: 'small-link'
+        tabindex: (tabindex+=1), class: 'small-link'
+    %ul{class: 'inline-list taglist'}
+      - @intrusion.tags.each do |tag|
+        %li.no-margin
+          = link_to tag.name, tag, class: 'panel radius link-panel tag',
+            tabindex: (tabindex+=1)

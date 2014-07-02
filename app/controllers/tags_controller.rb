@@ -23,7 +23,7 @@ class TagsController < ApplicationController
   end
   
   def show
-    
+    @intrusions = @tag.intrusions.sort
   end
   
   def edit

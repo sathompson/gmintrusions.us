@@ -1,7 +1,8 @@
+- tabindex = 0
 = form_for @intrusion, url: {action: @form_action} do |f|
   .row
     %div{class: 'small-12 large-10 large-centered columns'}
       = f.text_area :description, placeholder: 'Your intrusion...',
-        tabindex: 1, rows: 3
+        tabindex: (tabindex+=1), rows: 3
       .align-right= f.submit 'Save', class: 'button tiny radius no-margin',
-        tabindex: 2
+        tabindex: (tabindex+=1)

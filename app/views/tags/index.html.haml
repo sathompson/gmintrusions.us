@@ -1,2 +1,6 @@
-- @tags.each do |tag|
-  %p= "#{tag.id} - #{tag.name}"
+.row
+  %div{class: 'small-12 columns'}
+    %ul{class: 'inline-list taglist'}
+      - @tags.each do |tag|
+        %li.no-margin
+          = link_to tag.name, tag, class: 'panel radius link-panel tag'

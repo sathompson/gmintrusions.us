@@ -35,6 +35,10 @@ textarea {
   text-align: right;
 }
 
+.align-center {
+  text-align: center;
+}
+
 .small-link {
   font-size: 75%;
   margin-top: 0.5em;
@@ -46,13 +50,24 @@ textarea {
 }
 
 .no-margin {
-  margin: 0;
+  margin: 0 !important;
 }
 
 .link-panel {
   color: inherit;
 }
 
-.link-panel:hover {
-  color: inherit;
+.intrusion {
+  display: block;
+  margin-left: 0;
+  margin-bottom: 0.5em;
+}
+
+.tag {
+  margin: 0.25em 0.25ex;
+  padding: 0.5em;
+}
+
+.taglist {
+  padding-left: inherit;
 }

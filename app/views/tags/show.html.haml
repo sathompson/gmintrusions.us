@@ -1,1 +1,9 @@
-%p= "#{@tag.id} - #{@tag.name}"
+.row
+  %div{class: 'small-12 large-10 columns align-center'}
+    %p{class: 'panel radius tag'}= @tag.name
+  %div{class: 'small-12 large-2 columns'}
+    %ul.inline-list
+      %li= link_to 'edit', edit_tag_path(@tag.id)
+      %li= link_to 'delete', @tag, method: :delete
+- @skipNewIntrusionLinks = true
+= render partial: 'intrusions/intrusions_list'
