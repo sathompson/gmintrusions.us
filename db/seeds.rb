@@ -13,3 +13,7 @@ end
 100.times do
   Tag.create(name: Faker::Lorem.word)
 end
+
+1000.times do
+  Intrusion.find(1 + rand(100)).tags << Tag.find(1 + rand(100))
+end
