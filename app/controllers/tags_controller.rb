@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  before_filter :find_tag, only: [:show, :edit, :update]
+  before_filter :find_tag, only: [:show, :edit, :update, :destroy]
   
   ERR_EMPTY_NAME = 'Name cannot be empty.'
   ERR_UNKNOWN = 'Something went wrong.'
@@ -40,6 +40,11 @@ class TagsController < ApplicationController
     else
       render_with_error :edit, ERR_EMPTY_NAME
     end
+  end
+  
+  def destroy
+    @tag.destroy
+    redirect_to :tags
   end
   
   private
