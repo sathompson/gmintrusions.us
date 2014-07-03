@@ -31,14 +31,14 @@ var PONG = {
   P2: null,
   P1SCORE: 0,
   P2SCORE: 0,
-  PADDLEWIDTH: 40,
-  PADDLEHEIGHT: 250,
-  PADDLESPEED: 20,
+  PADDLEWIDTH: 25,
+  PADDLEHEIGHT: 100,
+  PADDLESPEED: 16,
   PADDLEMARGIN: 20,
   BALL: null,
-  BALLWIDTH: 30,
-  BALLHEIGHT: 30,
-  BALLSPEED: 10,
+  BALLWIDTH: 15,
+  BALLHEIGHT: 15,
+  BALLSPEED: 15,
   BALLX: 0,
   BALLY: 0,
   RANDOMBALLGO: function() {
@@ -58,8 +58,8 @@ var PONG = {
       PONG.BALLY = -PONG.BALLSPEED;
     }
   },
-  WINDOWWIDTH: $(window).width(),
-  WINDOWHEIGHT: $(window).height(),
+  WINDOWWIDTH: 900,
+  WINDOWHEIGHT: 600,
   DELTATIME: 20
 };
 
@@ -141,7 +141,20 @@ function doPONG() {
     border: '2px solid black'
   });
   
-  $('body').append(PONG.P1).append(PONG.P2).append(PONG.BALL);
+  
+  background = document.createElement('p');
+  background = $(background);
+  background.css({
+    position: 'fixed',
+    top: '0px',
+    left: '0px',
+    backgroundColor: 'black',
+    width: PONG.WINDOWWIDTH + 'px',
+    height: PONG.WINDOWHEIGHT + 'px'
+  });
+  
+  background.append(PONG.P1).append(PONG.P2).append(PONG.BALL);
+  $('body').append(background);
   
   PONG.RANDOMBALLGO();
   
@@ -168,11 +181,21 @@ function doPONG() {
       if (bp.top + PONG.BALLHEIGHT > p1p.top &&
           bp.top < p1p.top + PONG.PADDLEHEIGHT) {
         PONG.BALLX = PONG.BALLSPEED;
+        if (PONG.P1UP) {
+          PONG.BALLY = -PONG.BALLSPEED;
+        } else if (PONG.P1DOWN) {
+          PONG.BALLY = PONG.BALLSPEED;
+        }
       }
     } else if (bp.left > p2p.left) {
       if (bp.top + PONG.BALLHEIGHT > p2p.top &&
           bp.top < p2p.top + PONG.PADDLEHEIGHT) {
         PONG.BALLX = -PONG.BALLSPEED;
+        if (PONG.P2UP) {
+          PONG.BALLY = -PONG.BALLSPEED;
+        } else if (PONG.P2DOWN) {
+          PONG.BALLY = PONG.BALLSPEED;
+        }
       }
     }
     
