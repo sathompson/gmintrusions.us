@@ -10,9 +10,12 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  */
+
+@import 'reset';
+
+
 
 /* General classes */
 
@@ -25,8 +28,8 @@
 
 /* Header */
 
-$header-height: 45px;
-$header-margin: 2em;
+$header-height: 3rem;
+$header-margin: 2rem;
 
 #header {
   height: $header-height;
@@ -51,7 +54,7 @@ $header-margin: 2em;
 
 .top-nav-link {
   @extend .block-link;
-  padding: 0 0.5em;
+  padding: 0 1vw;
 }
 
 .top-nav-link:before {
@@ -71,8 +74,8 @@ $header-margin: 2em;
 
 /* Footer */
 
-$footer-height: 3em;
-$footer-margin: 2em;
+$footer-height: 3rem;
+$footer-margin: 2rem;
 
 html, body {
   height: 100%;
@@ -94,11 +97,11 @@ html, body {
 
 .bottom-nav {
   display: inline-block;
-  padding: 0 0.5em;
+  padding: 0 1vw;
 }
 
 #disclaimer-div {
-  padding: 0.25em 0;
+  padding: 0.25rem 0;
   text-align: center;
 }
 
@@ -114,3 +117,8 @@ html, body {
 #disclaimer:hover:visited {
   color: #551A8B;
 }
+
+
+
+@import 'intrusions';
+@import 'tags';
