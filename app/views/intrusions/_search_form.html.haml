@@ -1,9 +1,10 @@
-.row
-  %div{class: 'small-12 large-10 large-centered columns'}
-    = form_tag({controller: 'intrusions', action: 'search'}, {method: 'get'}) do
-      %div{class: 'row collapse'}
-        %div{class: 'small-11 columns'}
-          = text_field_tag :q, params[:q].present? ? params[:q] : nil, tabindex: 1,
-            placeholder: 'Tags, Description, Author...'
-        %div{class: 'small-1 columns'}
-          = submit_tag 'Search', class: 'button radius postfix', tabindex: 2
+#search-div{class: 'small-12 medium-11 large-10 centered row'}
+  = form_tag({controller: 'intrusions', action: 'search'},
+    {method: 'get'}) do
+    #search-field-div{class: 'small-10 medium-11'}
+      = text_field_tag :q, params[:q].present? ? params[:q] : nil,
+        tabindex: (@tabindex+=1), class: 'radius prefix',
+        id: 'search-field', placeholder: 'Tags, Description, Author...'
+    #search-submit-div{class: 'small-2 medium-1'}
+      = submit_tag 'Search', class: 'radius postfix',
+        tabindex: (@tabindex+=1), id: 'search-submit'

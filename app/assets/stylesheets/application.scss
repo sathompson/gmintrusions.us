@@ -14,16 +14,45 @@
  */
 
 @import 'reset';
+@import 'grid';
 
 
 
 /* General classes */
 
+.wide {
+  width: 100%;
+}
+
+.tall {
+  height: 100%;
+}
+
 .block-link {
+  @extend .tall;
   display: block;
   color: inherit;
   text-decoration: none;
-  height: 100%;
+}
+
+.radius {
+  border-radius: 0.25rem;
+}
+
+.prefix {
+  @extend .tall;
+  @extend .wide;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right-width: 0;
+}
+
+.postfix {
+  @extend .tall;
+  @extend .wide;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left-width: 0;
 }
 
 /* Header */
