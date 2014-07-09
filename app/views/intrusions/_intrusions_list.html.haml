@@ -1,20 +1,23 @@
 - if not @skipNewIntrusionLinks
-  %div{class: 'small-12 columns small-link-div'}
+  .small-12
     = link_to 'New Intrusion', new_intrusion_path, class: 'small-link'
 - @intrusions.each do |intrusion|
-  %div{class: 'small-12 columns spacer'}
-  %div{class: 'small-12 large-10 columns'}
-    = link_to intrusion.description, intrusion,
-      class: 'panel radius link-panel intrusion'
-    %ul{class: 'inline-list taglist'}
-      - (intrusion.tags.sort {|a,b| a.name <=> b.name}).each do |tag|
-        %li.no-margin
-          = link_to tag.name, tag, class: 'panel radius link-panel tag'
-  %div{class: 'small-12 large-2 columns'}
-    %ul.inline-list
-      %li= link_to 'edit', edit_intrusion_path(intrusion.id)
-      %li= link_to 'delete', intrusion, method: :delete
+  .small-12
+    %hr
+  %div{class: 'small-12 row intrusion-div'}
+    .small-12
+      = link_to intrusion.description, intrusion, class: 'intrusion'
+    .small-12
+      Tags:
+      = link_to 'delete', intrusion, method: :delete, class: 'small-link'
+      = link_to 'edit', edit_intrusion_path(intrusion.id), class: 'small-link'
+    .small-12
+      %ul
+        - (intrusion.tags.sort {|a,b| a.name <=> b.name}).each do |tag|
+          %li.float-left
+            = link_to tag.name, tag, class: 'tag'
 - if not @skipNewIntrusionLinks
-  %div{class: 'small-12 columns spacer'}
-  %div{class: 'small-12 columns small-link-div'}
+  .small-12
+    %hr
+  .small-12
     = link_to 'New Intrusion', new_intrusion_path, class: 'small-link'

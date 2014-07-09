@@ -7,3 +7,24 @@
 #search-div {
   margin-bottom: 1rem;
 }
+
+/* Intrusion List */
+
+.intrusion-div {
+  background-color: #ffffff;
+  border: 2px outset;
+  padding: 0.5rem;
+}
+
+.intrusion {
+  @extend .block-link, .radius;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  font-size: 110%;
+  margin: 0.25rem;
+  padding: 1rem;
+}
+
+.intrusion:hover {
+  color: #0000ff;
+}
