@@ -6,12 +6,12 @@
 
 .tag {
   @extend .block-link, .radius;
-  background-color: #ffffff;
-  border: 1px solid #000000;
+  background-color: #237e9c;
+  color: #ffffff;
   margin: 0.125rem;
   padding: 0.25rem;
 }
 
 .tag:hover {
-  color: #0000ff;
+  background-color: #18586d;
 }
