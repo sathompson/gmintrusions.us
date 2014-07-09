@@ -3,6 +3,16 @@
    License: none (public domain)
 */
 
+/*<My Addition>*/
+@mixin box-sizing($box-sizing) {
+  -webkit-box-sizing: $box-sizing;
+  -moz-box-sizing: $box-sizing;
+  -ms-box-sizing: $box-sizing;
+  -o-box-sizing: $box-sizing;
+  box-sizing: $box-sizing;
+}
+/*</My Addition>*/
+
 html, body, div, span, applet, object, iframe,
 /*h1, h2, h3, h4, h5, h6,*/ p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -22,6 +32,9 @@ time, mark, audio, video {
   font: inherit;
   font-size: 100%;
   vertical-align: baseline;
+  /*<My Addition>*/
+  @include box-sizing(border-box);
+  /*</My Addition>*/
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -48,7 +61,7 @@ table {
   border-spacing: 0;
 }
 
-// My additions
+/*My Addition*/
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;

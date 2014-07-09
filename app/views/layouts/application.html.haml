@@ -12,44 +12,52 @@
     = csrf_meta_tag
 
   %body
-    %header#header
-      %nav.top-bar{:'data-options' => 'is_hover: false'}
-        %ul.title-area
-          %li.name
-            %h1= link_to 'GMIntrusions.us', root_path
-        %section.top-bar-section
-          %ul.right
-            %li= link_to 'New Intrusion', new_intrusion_path
-        %section.top-bar-section
-          %ul.left
-            %li= link_to 'About', '#'
-            %li= link_to 'Contact Us', '#'
+    #page-wrap
+      %header#header
+        %nav#top-nav
+          %ul.top-nav#top-nav-title
+            %li.top-nav
+              %h1= link_to 'GMIntrusions.us', root_path,
+                class: 'top-nav-link'
+          %ul.top-nav#top-nav-left
+            %li.top-nav= link_to 'About', '#', class: 'top-nav-link'
+            %li.top-nav= link_to 'Contact Us', '#', class: 'top-nav-link'
+          %ul.top-nav#top-nav-right
+            %li.top-nav= link_to 'New Intrusion', new_intrusion_path,
+              class: 'top-nav-link'
 
-      - if @error_msg
-        - if @error_msg.respond_to? 'each'
-          - @error_msg.each do |msg|
-            %div{class: 'alert-box alert radius'}= msg
-        - else
-          %div{class: 'alert-box alert radius'}= @error_msg
+        - if @error_msg
+          - if @error_msg.respond_to? 'each'
+            - @error_msg.each do |msg|
+              .alert-box= msg
+          - else
+            .alert-box= @error_msg
 
-      - if @warning_msg
-        - if @warning_msg.respond_to? 'each'
-          - @warning_msg.each do |msg|
-            %div{class: 'alert-box warning radius'}= msg
-        - else
-          %div{class: 'alert-box warning radius'}= @warning_msg
+        - if @warning_msg
+          - if @warning_msg.respond_to? 'each'
+            - @warning_msg.each do |msg|
+              .warning-box= msg
+          - else
+            .warning-box= @warning_msg
 
-      - if @success_msg
-        - if @success_msg.respond_to? 'each'
-          - @success_msg.each do |msg|
-            %div{class: 'alert-box success radius'}= msg
-        - else
-          %div{class: 'alert-box success radius'}= @success_msg
-    
-    #body
+        - if @success_msg
+          - if @success_msg.respond_to? 'each'
+            - @success_msg.each do |msg|
+              .success-box= msg
+          - else
+            .success-box= @success_msg
+
       = yield
 
     %footer#footer
-      
+      %nav#bottom-nav
+        %ul.bottom-nav
+          %li.bottom-nav
+            = link_to 'About', '#'
+          %li.bottom-nav
+            = link_to 'Contact Us', '#'
+      #disclaimer-div
+        = link_to 'Numenera and its logo are trademarks of Monte Cook Games, LLC in the U.S.A. and other countries. All Monte Cook Games characters and character names, and the distinctive likenesses thereof, are trademarks of Monte Cook Games, LLC. Content derived from Monte Cook Games publications is © 2013-2014 Monte Cook Games, LLC.',
+        '#', id: 'disclaimer'
 
     = javascript_include_tag "application"

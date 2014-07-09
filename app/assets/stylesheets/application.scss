@@ -13,3 +13,104 @@
  *= require_tree .
  *= require_self
  */
+
+/* General classes */
+
+.block-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  height: 100%;
+}
+
+/* Header */
+
+$header-height: 45px;
+$header-margin: 2em;
+
+#header {
+  height: $header-height;
+  margin-bottom: $header-margin;
+}
+
+#top-nav {
+  background-color: #303030;
+  color: #E8E8E8;
+  height: 100%;
+}
+
+.top-nav {
+  display: inline-block;
+  vertical-align: text-bottom;
+  height: 100%;
+  
+  h1 {
+    height: 100%;
+  }
+}
+
+.top-nav-link {
+  @extend .block-link;
+  padding: 0 0.5em;
+}
+
+.top-nav-link:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.top-nav-link:hover {
+  background-color: #000000;
+}
+
+#top-nav-right {
+  float: right;
+}
+
+/* Footer */
+
+$footer-height: 3em;
+$footer-margin: 2em;
+
+html, body {
+  height: 100%;
+}
+
+#page-wrap {
+  min-height: 100%;
+  padding-bottom: $footer-height+$footer-margin;
+  margin-bottom: -$footer-height;
+}
+
+#footer {
+  height: $footer-height;
+}
+
+#bottom-nav {
+  text-align: center;
+}
+
+.bottom-nav {
+  display: inline-block;
+  padding: 0 0.5em;
+}
+
+#disclaimer-div {
+  padding: 0.25em 0;
+  text-align: center;
+}
+
+#disclaimer {
+  font-size: 25%;
+  color: inherit;
+}
+
+#disclaimer:hover {
+  color: #0000EE;
+}
+
+#disclaimer:hover:visited {
+  color: #551A8B;
+}
