@@ -1,0 +1,202 @@
+.centered {
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+}
+
+.row {
+  @extend .centered;
+  display: block;
+  max-width: 100ch;
+  overflow: hidden;
+}
+
+.centered.row {
+  @extend .row;
+}
+
+@media only screen {
+  .small-1 {
+    float: left;
+    width: 8.33333%
+  }
+  
+  .small-2 {
+    float: left;
+    width: 16.66667%;
+  }
+  
+  .small-3 {
+    float: left;
+    width: 25%;
+  }
+  
+  .small-4 {
+    float: left;
+    width: 33.33333%;
+  }
+  
+  .small-5 {
+    float: left;
+    width: 41.66667%;
+  }
+  
+  .small-6 {
+    float: left;
+    width: 50%;
+  }
+  
+  .small-7 {
+    float: left;
+    width: 58.33333%;
+  }
+  
+  .small-8 {
+    float: left;
+    width: 66.66667%;
+  }
+  
+  .small-9 {
+    float: left;
+    width: 75%;
+  }
+  
+  .small-10 {
+    float: left;
+    width: 83.33333%;
+  }
+  
+  .small-11 {
+    float: left;
+    width: 91.66667%;
+  }
+  
+  .small-12 {
+    float: left;
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 50rem) {
+  .medium-1 {
+    float: left;
+    width: 8.33333%
+  }
+  
+  .medium-2 {
+    float: left;
+    width: 16.66667%;
+  }
+  
+  .medium-3 {
+    float: left;
+    width: 25%;
+  }
+  
+  .medium-4 {
+    float: left;
+    width: 33.33333%;
+  }
+  
+  .medium-5 {
+    float: left;
+    width: 41.66667%;
+  }
+  
+  .medium-6 {
+    float: left;
+    width: 50%;
+  }
+  
+  .medium-7 {
+    float: left;
+    width: 58.33333%;
+  }
+  
+  .medium-8 {
+    float: left;
+    width: 66.66667%;
+  }
+  
+  .medium-9 {
+    float: left;
+    width: 75%;
+  }
+  
+  .medium-10 {
+    float: left;
+    width: 83.33333%;
+  }
+  
+  .medium-11 {
+    float: left;
+    width: 91.66667%;
+  }
+  
+  .medium-12 {
+    float: left;
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1000rem) {
+  .large-1 {
+    float: left;
+    width: 8.33333%
+  }
+  
+  .large-2 {
+    float: left;
+    width: 16.66667%;
+  }
+  
+  .large-3 {
+    float: left;
+    width: 25%;
+  }
+  
+  .large-4 {
+    float: left;
+    width: 33.33333%;
+  }
+  
+  .large-5 {
+    float: left;
+    width: 41.66667%;
+  }
+  
+  .large-6 {
+    float: left;
+    width: 50%;
+  }
+  
+  .large-7 {
+    float: left;
+    width: 58.33333%;
+  }
+  
+  .large-8 {
+    float: left;
+    width: 66.66667%;
+  }
+  
+  .large-9 {
+    float: left;
+    width: 75%;
+  }
+  
+  .large-10 {
+    float: left;
+    width: 83.33333%;
+  }
+  
+  .large-11 {
+    float: left;
+    width: 91.66667%;
+  }
+  
+  .large-12 {
+    float: left;
+    width: 100%;
+  }
+}
