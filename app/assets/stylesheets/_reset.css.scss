@@ -77,9 +77,10 @@ h3 { font-size: 117%; }
 h5 { font-size: 83%; }
 h6 { font-size: 75%; }
 
-input {
-  padding: 2px;
-  border-width: 2px;
+input, textarea {
+  @include box-sizing(border-box);
+  padding: 0.25rem;
+  border: 0;
   margin: 0;
   font-size: 100%;
 }

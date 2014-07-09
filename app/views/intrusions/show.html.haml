@@ -1,16 +1,2 @@
-- tabindex = 0
 .row
-  %div{class: 'small-12 large-10 large-centered columns'}
-    %p{class: 'panel radius'}= @intrusion.description
-    .align-right
-      = link_to 'Edit', edit_intrusion_path(@intrusion.id),
-        tabindex: (tabindex+=1), class: 'button tiny radius no-margin'
-    .small-link-div
-      = link_to 'delete', @intrusion, method: :delete,
-        tabindex: (tabindex+=1), class: 'small-link'
-    %div= 'Tags:'
-    %ul{class: 'inline-list taglist'}
-      - @intrusion.tags.each do |tag|
-        %li.no-margin
-          = link_to tag.name, tag, class: 'panel radius link-panel tag',
-            tabindex: (tabindex+=1)
+  = render partial: 'intrusion'

@@ -2,20 +2,10 @@
   .small-12
     = link_to 'New Intrusion', new_intrusion_path, class: 'small-link'
 - @intrusions.each do |intrusion|
+  - @intrusion = intrusion
   .small-12
     %hr
-  %div{class: 'small-12 row intrusion-div'}
-    .small-12
-      = link_to intrusion.description, intrusion, class: 'intrusion'
-    .small-12
-      Tags:
-      = link_to 'delete', intrusion, method: :delete, class: 'small-link'
-      = link_to 'edit', edit_intrusion_path(intrusion.id), class: 'small-link'
-    .small-12
-      %ul
-        - (intrusion.tags.sort {|a,b| a.name <=> b.name}).each do |tag|
-          %li.float-left
-            = link_to tag.name, tag, class: 'tag'
+  = render partial: 'intrusion'
 - if not @skipNewIntrusionLinks
   .small-12
     %hr

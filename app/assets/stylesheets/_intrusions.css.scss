@@ -29,3 +29,10 @@
   background-color: #113f4e;
   color: #4e97af;
 }
+
+/* Intrusion Edit */
+
+.intrusion-textarea {
+  @extend .wide;
+  margin-bottom: 0.5rem;
+}
