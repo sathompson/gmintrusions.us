@@ -1,7 +1,4 @@
-= render partial: 'intrusions/search_form'
 .row
-  %div{class: 'small-12 columns'}
-    %ul{class: 'inline-list taglist'}
-      - @tags.each do |tag|
-        %li.no-margin
-          = link_to tag.name, tag, class: 'panel radius link-panel tag'
+  = render partial: 'intrusions/search_form'
+  .small-12
+    = render partial: 'tags_list'

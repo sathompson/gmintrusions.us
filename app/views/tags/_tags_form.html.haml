@@ -1,6 +1,0 @@
-= form_for @tag, url: {action: @form_action} do |f|
-  .row
-    %div{class: 'small-12 large-10 large-centered columns'}
-      = f.text_field :name, placeholder: 'Tag name...', tabindex: 1
-      .align-right= f.submit 'Save', class: 'button tiny radius no-margin',
-        tabindex: 2

@@ -1,14 +1,12 @@
 %div{class: 'small-12 row intrusion-div'}
   = form_for @intrusion, url: {action: @form_action} do |f|
     .small-12
-      = link_to 'delete', @intrusion, method: :delete, class: 'small-link'
-    .small-12
       = f.text_area :description, placeholder: 'Your intrusion...',
-        tabindex: (@tabindex+=1), rows: 3, class: 'intrusion-textarea'
+        tabindex: (@tabindex ? @tabindex+=1 : @tabindex=1), rows: 3,
+        class: 'intrusion-textarea'
     .small-12
       Tags:
-      = f.submit 'Save', class: 'button tiny radius no-margin',
-        tabindex: (@tabindex+=1), class: 'float-right'
+      = f.submit 'Save', class: 'radius, float-right', tabindex: (@tabindex+=1)
   .small-12
     %ul
       - (@intrusion.tags.sort {|a,b| a.name <=> b.name}).each do |tag|

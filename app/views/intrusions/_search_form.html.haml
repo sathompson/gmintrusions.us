@@ -3,8 +3,9 @@
     {method: 'get'}) do
     #search-field-div{class: 'small-10 medium-11'}
       = text_field_tag :q, params[:q].present? ? params[:q] : nil,
-        tabindex: (@tabindex+=1), class: 'radius prefix',
-        id: 'search-field', placeholder: 'Tags, Description, Author...'
+        tabindex: (@tabindex ? @tabindex+=1 : @tabindex=1),
+        id: 'search-field', placeholder: 'Tags, Description, Author...',
+        class: 'radius prefix'
     #search-submit-div{class: 'small-2 medium-1'}
       = submit_tag 'Search', class: 'radius postfix',
         tabindex: (@tabindex+=1), id: 'search-submit'

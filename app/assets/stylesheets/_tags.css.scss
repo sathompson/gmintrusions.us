@@ -15,3 +15,10 @@
 .tag:hover {
   background-color: #18586d;
 }
+
+/* Tag Form */
+
+.tag-text-field {
+  @extend .wide;
+  margin-bottom: 0.5rem;
+}

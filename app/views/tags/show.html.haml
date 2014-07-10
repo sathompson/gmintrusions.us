@@ -1,10 +1,10 @@
-= render partial: 'intrusions/search_form'
 .row
-  %div{class: 'small-12 large-10 columns align-center'}
-    %p{class: 'panel radius tag'}= @tag.name
-  %div{class: 'small-12 large-2 columns'}
-    %ul.inline-list
-      %li= link_to 'edit', edit_tag_path(@tag.id)
-      %li= link_to 'delete', @tag, method: :delete
-- @skipNewIntrusionLinks = true
-= render partial: 'intrusions/intrusions_list'
+  = render partial: 'intrusions/search_form'
+  %div{class: 'small-10 centered row'}
+    .small-12
+      = link_to @tag.name, @tag, class: 'tag'
+    .small-12
+      = link_to 'delete', @tag, method: :delete, class: 'small-link'
+      = link_to 'edit', edit_tag_path(@tag.id), class: 'small-link'
+  - @skipNewIntrusionLinks = true
+  = render partial: 'intrusions/intrusions_list'

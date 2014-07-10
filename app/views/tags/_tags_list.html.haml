@@ -1,0 +1,4 @@
+%ul
+  - (@tags.sort {|a,b| a.name <=> b.name}).each do |tag|
+    %li.float-left
+      = link_to tag.name, tag, class: 'tag'

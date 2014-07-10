@@ -6,7 +6,5 @@
     = link_to 'delete', @intrusion, method: :delete, class: 'small-link'
     = link_to 'edit', edit_intrusion_path(@intrusion.id), class: 'small-link'
   .small-12
-    %ul
-      - (@intrusion.tags.sort {|a,b| a.name <=> b.name}).each do |tag|
-        %li.float-left
-          = link_to tag.name, tag, class: 'tag'
+    - @tags = @intrusion.tags
+    = render partial: 'tags/tags_list'
