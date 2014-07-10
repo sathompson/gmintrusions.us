@@ -27,7 +27,7 @@ class TagsController < ApplicationController
   end
   
   def edit
-    @form_action = :edit
+    @form_action = :update
   end
   
   def update
