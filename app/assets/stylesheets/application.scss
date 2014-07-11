@@ -68,6 +68,11 @@ body {
   margin: 0.25rem;
 }
 
+@mixin trans($transition...) {
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+
 /* Header */
 
 $header-height: 3rem;

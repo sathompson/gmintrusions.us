@@ -6,14 +6,15 @@
 
 .tag {
   @extend .block-link, .radius;
-  background-color: #237e9c;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #000000;
   margin: 0.125rem;
   padding: 0.25rem;
 }
 
 .tag:hover {
-  background-color: #18586d;
+  background-color: #dddddd;
+  @include trans(background-color 0.5s);
 }
 
 /* Tag Form */

@@ -11,14 +11,15 @@
 /* Intrusions List */
 
 .intrusion-div {
-  background-color: #91becd;
+  @extend .radius;
+  background-color: #cccccc;
   border: 2px outset;
   padding: 0.5rem;
 }
 
 .intrusion {
   @extend .block-link, .radius;
-  background-color: #4e97af;
+  background-color: #ffffff;
   color: #000000;
   font-size: 110%;
   margin: 0.5rem 0.125rem;
@@ -26,8 +27,8 @@
 }
 
 .intrusion:hover {
-  background-color: #113f4e;
-  color: #4e97af;
+  background-color: #dddddd;
+  @include trans(background-color 0.5s);
 }
 
 /* Intrusion Form */
