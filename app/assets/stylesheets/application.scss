@@ -44,6 +44,13 @@ body {
   text-decoration: none;
 }
 
+.v-centered:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
 .radius {
   border-radius: 0.25rem;
 }
@@ -100,15 +107,8 @@ $header-margin: 2rem;
 }
 
 .top-nav-link {
-  @extend .tall, .block-link;
+  @extend .tall, .block-link, .v-centered;
   padding: 0 1vw;
-}
-
-.top-nav-link:before {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
 }
 
 .top-nav-link:hover {

@@ -23,3 +23,19 @@
   @extend .wide;
   margin-bottom: 0.5rem;
 }
+
+/* Intrusion Form */
+
+.tag-checkbox-li {
+  @extend .float-left;
+  margin-bottom: 0.5rem;
+}
+
+.tag-checkbox-label {
+  display: inline-block;
+}
+
+.tag-checkbox {
+  @extend .v-centered;
+  margin-right: 0.75rem;
+}
