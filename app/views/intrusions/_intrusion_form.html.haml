@@ -11,7 +11,8 @@
       %ul
         - (@tags.sort { |a,b| !( (a_has=a.intrusions.include?(@intrusion)) ^ b.intrusions.include?(@intrusion) ) ? a.name <=> b.name : (a_has ? -1 : 1) }).each do |tag|
           %li.tag-checkbox-li
-            %label.tag-checkbox-label= link_to tag.name, tag, class: 'tag'
             = check_box_tag "intrusion[tag_ids][]", tag.id,
               @intrusion.tags.include?(tag), tabindex: (@tabindex+=1),
-              class: 'tag-checkbox'
+              class: 'tag-checkbox', id: "intrusion_tag_ids_#{tag.id}"
+            %label.tag-checkbox-label{for: "intrusion_tag_ids_#{tag.id}"}
+              = tag.name
