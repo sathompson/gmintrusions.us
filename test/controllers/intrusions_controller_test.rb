@@ -79,4 +79,82 @@ class IntrusionsControllerTest < ActionController::TestCase
     assert_empty Intrusion.where(id: intrusion.id),
       'the intrusion was not deleted'
   end
+  
+  test ':update adds new tags' do
+    num_tags = 3
+    [:patch, :put].each do |http_method|
+      intrusion = Intrusion.new
+      intrusion.description = Faker::Lorem.sentence
+      intrusion.save
+      
+      tags = []
+      num_tags.times do
+        tag = Tag.new
+        tag.name = Faker::Lorem.word
+        tag.save
+        tags << tag
+      end
+      intrusion.tags.concat tags
+      
+      test_tag = Tag.new
+      test_tag.name = Faker::Lorem.word
+      test_tag.save
+      
+      form = {id: intrusion.id, description: intrusion.description,
+        tag_ids: (tags << test_tag).map do |tag| tag.id end}
+      self.send http_method, :update, id: intrusion.id, intrusion: form
+      assert assigns(:intrusion).tags.include?(test_tag),
+        "intrusion does not have new tag for http method: #{http_method}"
+    end
+  end
+  
+  test ':update deletes tags' do
+    num_tags = 3
+    [:patch, :put].each do |http_method|
+      intrusion = Intrusion.new
+      intrusion.description = Faker::Lorem.sentence
+      intrusion.save
+      
+      tags = []
+      num_tags.times do
+        tag = Tag.new
+        tag.name = Faker::Lorem.word
+        tag.save
+        tags << tag
+      end
+      intrusion.tags.concat tags
+      
+      test_tag = tags[rand num_tags]
+      tags.delete test_tag
+      
+      form = {id: intrusion.id, description: intrusion.description,
+        tag_ids: tags.map do |tag| tag.id end}
+      self.send http_method, :update, id: intrusion.id, intrusion: form
+      assert_not assigns(:intrusion).tags.include?(test_tag),
+        "intrusion still has tag for http method: #{http_method}"
+    end
+  end
+  
+  test ':create creates new intrusion with tags' do
+    num_tags = 3
+    tags = []
+    num_tags.times do
+      tag = Tag.new
+      tag.name = Faker::Lorem.word
+      tag.save
+      tags << tag
+    end
+    
+    test_description = Faker::Lorem.sentence
+    
+    form = {description: test_description,
+      tag_ids: tags.map do |tag| tag.id end}
+    post :create, intrusion: form
+    
+    intrusion = Intrusion.find_by(description: test_description)
+    tags.each do |tag|
+      assert intrusion.tags.include?(tag),
+        'new intrusion does not have selected tag'
+    end
+  end
 end
