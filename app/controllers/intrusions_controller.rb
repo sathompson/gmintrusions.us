@@ -17,6 +17,8 @@ class IntrusionsController < ApplicationController
       redirect_to Intrusion.create intrusion_params
     else
       @intrusion = Intrusion.new
+      @form_action = :create
+      @tags = Tag.all
       render_with_error :new, 'Description cannot be empty'
     end
   end
