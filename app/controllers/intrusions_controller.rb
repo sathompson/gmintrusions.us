@@ -8,7 +8,8 @@ class IntrusionsController < ApplicationController
   
   def new
     @intrusion = Intrusion.new
-    @form_action = 'create'
+    @form_action = :create
+    @tags = Tag.all
   end
   
   def create
@@ -25,7 +26,8 @@ class IntrusionsController < ApplicationController
   end
   
   def edit
-    @form_action = 'update'
+    @form_action = :update
+    @tags = Tag.all
   end
   
   def update
@@ -62,6 +64,6 @@ class IntrusionsController < ApplicationController
   end
   
   def intrusion_params
-    params.require(:intrusion).permit(:description)
+    params.require(:intrusion).permit(:description, tag_ids: [])
   end
 end
