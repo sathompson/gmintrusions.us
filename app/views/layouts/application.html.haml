@@ -25,6 +25,8 @@
           %ul.top-nav#top-nav-right
             %li.top-nav= link_to 'New Intrusion', new_intrusion_path,
               class: 'top-nav-link'
+            %li.top-nav= link_to 'New Tag', new_tag_path,
+              class: 'top-nav-link'
 
         - if @error_msg
           - if @error_msg.respond_to? 'each'
