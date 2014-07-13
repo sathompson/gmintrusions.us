@@ -1,25 +1,17 @@
 class TagsController < ApplicationController
   before_filter :find_tag, only: [:show, :edit, :update, :destroy]
-  
-  ERR_EMPTY_NAME = 'Name cannot be empty.'
-  ERR_UNKNOWN = 'Something went wrong.'
+  before_filter :new_tag, only: [:new, :create]
   
   def index
     @tags = Tag.order :name
   end
   
   def new
-    @tag = Tag.new
     @form_action = :create
   end
   
   def create
-    if params[:tag][:name].present?
-      redirect_to Tag.create tag_params
-    else
-      @tag = Tag.new
-      render_with_error :new, ERR_EMPTY_NAME
-    end
+    create_or_update :create
   end
   
   def show
@@ -31,15 +23,7 @@ class TagsController < ApplicationController
   end
   
   def update
-    if params[:tag][:name].present?
-      if @tag.update tag_params
-        redirect_to @tag
-      else
-        render_with_error :edit, ERR_UNKNOWN
-      end
-    else
-      render_with_error :edit, ERR_EMPTY_NAME
-    end
+    create_or_update :update
   end
   
   def destroy
@@ -49,8 +33,18 @@ class TagsController < ApplicationController
   
   private
   
-  def render_with_error(action, error_msg)
-    @error_msg = error_msg
+  def create_or_update(method)
+    @tag.update(tag_params)
+    if @tag.valid?
+      redirect_to @tag
+    else
+      @form_action = method
+      render_with_error ({create: :new, update: :edit}[method]), @tag
+    end
+  end
+  
+  def render_with_error(action, tag)
+    @error_msg = tag.errors.map { |_,m| m }
     render action
   end
   
@@ -60,5 +54,9 @@ class TagsController < ApplicationController
   
   def find_tag
     @tag = Tag.find(params[:id])
+  end
+  
+  def new_tag
+    @tag = Tag.new
   end
 end

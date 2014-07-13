@@ -1,5 +1,9 @@
 require 'test_helper'
 
+def self.startup
+  Rake::Task['db:reset'].invoke
+end
+
 class TagsControllerTest < ActionController::TestCase
   test ':index sets @tags to a sorted list of all tags' do
     get :index
