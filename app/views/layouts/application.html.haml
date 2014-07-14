@@ -24,9 +24,9 @@
             %li.top-nav= link_to 'Contact Us', '#', class: 'top-nav-link'
           %ul.top-nav#top-nav-right
             %li.top-nav= link_to 'New Intrusion', new_intrusion_path,
-              class: 'top-nav-link'
+              class: 'top-nav-link', id: 'newIntrusionLink'
             %li.top-nav= link_to 'New Tag', new_tag_path,
-              class: 'top-nav-link'
+              class: 'top-nav-link', id: 'newTagLink'
 
         - if @error_msg
           - if @error_msg.respond_to? 'each'
@@ -60,6 +60,6 @@
             = link_to 'Contact Us', '#'
       #disclaimer-div
         = link_to 'Numenera and its logo are trademarks of Monte Cook Games, LLC in the U.S.A. and other countries. All Monte Cook Games characters and character names, and the distinctive likenesses thereof, are trademarks of Monte Cook Games, LLC. Content derived from Monte Cook Games publications is © 2013-2014 Monte Cook Games, LLC.',
-        '/disclaimer', id: 'disclaimer'
+          '/disclaimer', id: 'disclaimer'
 
     = javascript_include_tag "application"
