@@ -7,6 +7,9 @@
 
     %title= content_for?(:title) ? yield(:title) : "GM Intrusions!"
 
+    -# Bootstrap
+    = stylesheet_link_tag "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+
     = stylesheet_link_tag "application"
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tag
@@ -62,4 +65,9 @@
         = link_to 'Numenera and its logo are trademarks of Monte Cook Games, LLC in the U.S.A. and other countries. All Monte Cook Games characters and character names, and the distinctive likenesses thereof, are trademarks of Monte Cook Games, LLC. Content derived from Monte Cook Games publications is © 2013-2014 Monte Cook Games, LLC.',
         '/disclaimer', id: 'disclaimer'
 
-    = javascript_include_tag "application"
+    -# jQuery
+    = javascript_include_tag 'https://code.jquery.com/jquery-2.1.1.min.js'
+    -# Bootstrap
+    = javascript_include_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'
+    -# Application
+    = javascript_include_tag 'application'
