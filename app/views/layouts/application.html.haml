@@ -28,38 +28,35 @@
               id: 'newIntrusionLink'
             %li= link_to 'New Tag', new_tag_path, id: 'newTagLink'
 
-    /Begin page content
-    .container
+    .container#alerts
       - if @error_msg
         - @error_msg.each do |msg|
-          .alert-danger= msg
+          .alert.alert-danger= msg
 
       - if @warning_msg
         - @warning_msg.each do |msg|
-          .alert-warning= msg
+          .alert.alert-warning= msg
 
       - if @info_msg
         - @info_msg.each do |msg|
-          .alert-info= msg
+          .alert.alert-info= msg
 
       - if @success_msg
         - @success_msg.each do |msg|
-          .alert-success= msg
+          .alert.alert-success= msg
 
+    .container
       = yield
 
-    .footer
-      .container
-        %p.text-muted test
-      /
-        .container
-          %nav
-            %ul
-              %li= link_to 'About', '#'
-              %li= link_to 'Contact Us', '#'
-        %p.text-muted
+    %footer.footer
+      .container.text-center
+        %nav{role: 'navigation'}
+          %ul.list-inline
+            %li= link_to 'About', '#'
+            %li= link_to 'Contact Us', '#'
+        %p
           = link_to 'Numenera and its logo are trademarks of Monte Cook Games, LLC in the U.S.A. and other countries. All Monte Cook Games characters and character names, and the distinctive likenesses thereof, are trademarks of Monte Cook Games, LLC. Content derived from Monte Cook Games publications is © 2013-2014 Monte Cook Games, LLC.',
-            '/disclaimer', id: 'disclaimer'
+            '/disclaimer', class: 'text-muted'
 
     -# jQuery
     = javascript_include_tag 'https://code.jquery.com/jquery-2.1.1.min.js'
