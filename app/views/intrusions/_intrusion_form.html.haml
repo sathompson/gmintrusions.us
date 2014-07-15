@@ -15,7 +15,7 @@
           = f.submit 'Save', class: 'btn btn-default', tabindex: (@tabindex+=1)
       .form-group.list-group-item
         %p Tags:
-        .list-inline.tag-list
+        .list-inline.text-center.tag-list
           - (@tags.sort { |a,b| !( (a_has=a.intrusions.include?(@intrusion)) ^ b.intrusions.include?(@intrusion) ) ? a.name <=> b.name : (a_has ? -1 : 1) }).each do |tag|
             = check_box_tag "intrusion[tag_ids][]", tag.id,
               @intrusion.tags.include?(tag), tabindex: (@tabindex+=1),
