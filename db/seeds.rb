@@ -7,11 +7,17 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 100.times do
-  Intrusion.create(description: Faker::Lorem.paragraph(2))
+  intrusion = Intrusion.new
+  begin
+    intrusion.description = Faker::Lorem.paragraph 2
+  end until intrusion.save
 end
 
 100.times do
-  Tag.create(name: Faker::Lorem.word)
+  tag = Tag.new
+  begin
+    tag.name = Faker::Lorem.word
+  end until tag.save
 end
 
 1000.times do

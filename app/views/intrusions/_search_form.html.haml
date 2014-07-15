@@ -3,6 +3,6 @@
   .form-group.has-feedback
     %label.sr-only{for: 'searchField'}= 'Search:'
     = text_field_tag :q, params[:q].present? ? params[:q] : nil,
-      tabindex: @tabindex ? @tabindex+=1 : @tabindex=1, id: 'searchField',
+      tabindex: @tabindex ? @tabindex+=1 : @tabindex=10, id: 'searchField',
       placeholder: 'Search...', class: 'form-control'
     %span.glyphicon.glyphicon-search.form-control-feedback

@@ -14,6 +14,6 @@
         %label.sr-only{for: 'tagTextField'} Tag Name
         = f.text_field :name, placeholder: 'Tag name...',
           tabindex: (@tabindex ? @tabindex+=1 : @tabindex=1),
-          id: 'tagTextField', class: 'form-control'
+          id: 'tagTextField', class: 'form-control', autofocus: true
       .text-right
         = f.submit 'Save', class: 'btn btn-default', tabindex: (@tabindex+=1)

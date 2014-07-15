@@ -8,7 +8,7 @@ class IntrusionsControllerTest < ActionController::TestCase
 
   test ':index sets @intrusions to a sorted list of all intrusions' do
     get :index
-    assert_equal (Intrusion.all.sort { |a, b| a.created_at <=> b.created_at }),
+    assert_equal (Intrusion.all.sort { |a, b| b.created_at <=> a.created_at }),
       assigns(:intrusions),
       '@intrusions should be set to an array of all intrusions sorted by id.'
   end

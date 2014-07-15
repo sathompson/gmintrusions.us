@@ -4,10 +4,13 @@
 
 $('#newTagLink').on 'click', (e) ->
   e.preventDefault()
+  $('#modalBody').html('Loading...')
+  $('#modal').modal('show')
   $.ajax
     url: '/tags/new.json'
     success: (data) ->
       $('#modalBody').html($.parseHTML(data.html))
+      $('[autofocus]').focus()
       $('#tagForm').on 'submit', (e) ->
         e.preventDefault()
         $('#modal').modal('hide')
@@ -20,4 +23,3 @@ $('#newTagLink').on 'click', (e) ->
               displaySuccesses([data.tag.name + ' successfully created'])
             else
               displayErrors(data.errors)
-      $('#modal').modal('show')

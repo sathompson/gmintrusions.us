@@ -22,7 +22,9 @@ class TagsController < ApplicationController
   end
 
   def show
-    @intrusions = @tag.intrusions.sort
+    @intrusions = @tag.intrusions.sort do |a, b|
+      b.created_at <=> a.created_at
+    end
   end
 
   def edit
@@ -57,7 +59,8 @@ class TagsController < ApplicationController
       respond_to do |format|
         format.html {
           @form_action = method
-          render_with_error ({create: :new, update: :edit}[method]), @tag
+          render_with_errors ({create: :new, update: :edit}[method]),
+            get_errors(@tag)
         }
         format.json {
           render json: {
@@ -72,8 +75,8 @@ class TagsController < ApplicationController
     tag.errors.map { |_,m| m }
   end
 
-  def render_with_error(action, tag)
-    @error_msgs = get_errors(tag)
+  def render_with_errors(action, msgs)
+    @error_msgs = msgs
     render action
   end
 
