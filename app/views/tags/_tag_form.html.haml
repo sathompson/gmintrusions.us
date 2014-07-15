@@ -1,7 +1,12 @@
-= form_for @tag, url: {action: @form_action} do |f|
-  .small-12
-    = f.text_field :name, placeholder: 'Tag name...',
-      tabindex: (@tabindex ? @tabindex+=1 : @tabindex=1),
-      class: 'tag-text-field'
-  .small-12
-    = f.submit 'Save', class: 'radius float-right', tabindex: (@tabindex+=1)
+= form_for @tag, url: {action: @form_action}, html: {role: 'form'} do |f|
+  .panel.panel-primary.tag-panel
+    .panel-heading.text-right.tag-heading
+      = link_to 'delete', @tag, method: :delete, class: 'label label-danger'
+    .panel-body
+      .form-group
+        %label.sr-only{for: 'tagTextField'} Tag Name
+        = f.text_field :name, placeholder: 'Tag name...',
+          tabindex: (@tabindex ? @tabindex+=1 : @tabindex=1),
+          id: 'tagTextField', class: 'form-control'
+      .text-right
+        = f.submit 'Save', class: 'btn btn-default', tabindex: (@tabindex+=1)
