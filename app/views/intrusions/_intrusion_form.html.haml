@@ -6,10 +6,11 @@
     .list-group
       .list-group-item
         .form-group
-          %label.sr-only{for: "intrusion-textarea-#{@intrusion.id}"}
+          %label.sr-only{for: "intrusionTextarea#{@intrusion.id}"}
+            Intrusion Description
           = f.text_area :description, placeholder: 'Your intrusion...',
             tabindex: (@tabindex ? @tabindex+=1 : @tabindex=1), rows: 3,
-            id: "intrusion-textarea-#{@intrusion.id}",
+            id: "intrusionTextarea#{@intrusion.id}",
             class: 'form-control'
         .text-right
           = f.submit 'Save', class: 'btn btn-default', tabindex: (@tabindex+=1)
@@ -19,5 +20,5 @@
           - (@tags.sort { |a,b| !( (a_has=a.intrusions.include?(@intrusion)) ^ b.intrusions.include?(@intrusion) ) ? a.name <=> b.name : (a_has ? -1 : 1) }).each do |tag|
             = check_box_tag "intrusion[tag_ids][]", tag.id,
               @intrusion.tags.include?(tag), tabindex: (@tabindex+=1),
-              id: "tag-#{tag.id}", class: 'hidden'
-            %label.label.label-primary.tag-label{for: "tag-#{tag.id}"}= tag.name
+              id: "tag#{tag.id}", class: 'hidden'
+            %label.label.label-primary.tag-label{for: "tag#{tag.id}"}= tag.name
