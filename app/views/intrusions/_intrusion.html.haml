@@ -1,10 +1,13 @@
-%div{class: 'small-12 row intrusion-div'}
-  .small-12
-    = link_to @intrusion.description, @intrusion, class: 'intrusion'
-  .small-12
-    Tags:
-    = link_to 'delete', @intrusion, method: :delete, class: 'small-link'
-    = link_to 'edit', edit_intrusion_path(@intrusion.id), class: 'small-link'
-  .small-12
-    - @tags = @intrusion.tags
-    = render partial: 'tags/tags_list'
+.panel.panel-primary
+  .panel-heading.text-right.intrusion-heading
+    = link_to 'edit', edit_intrusion_path(@intrusion.id),
+      class: 'label label-info'
+    = link_to 'delete', @intrusion, method: :delete,
+      class: 'label label-danger'
+  .list-group
+    = link_to @intrusion.description, @intrusion,
+      class: 'list-group-item intrusion-description'
+    .list-group-item
+      %p Tags:
+      - @tags = @intrusion.tags
+      = render partial: 'tags/tags_list'

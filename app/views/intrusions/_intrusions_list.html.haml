@@ -1,13 +1,4 @@
-- if not @skipNewIntrusionLinks
-  .small-12
-    = link_to 'New Intrusion', new_intrusion_path, class: 'small-link'
 - @intrusions.each do |intrusion|
   - @intrusion = intrusion
-  .small-12
-    %hr
-  = render partial: 'intrusions/intrusion'
-- if not @skipNewIntrusionLinks
-  .small-12
-    %hr
-  .small-12
-    = link_to 'New Intrusion', new_intrusion_path, class: 'small-link'
+  .xs-col-12
+    = render partial: 'intrusions/intrusion'

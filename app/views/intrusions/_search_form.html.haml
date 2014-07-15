@@ -1,11 +1,8 @@
-#search-div{class: 'small-12 medium-11 large-10 centered row'}
-  = form_tag({controller: 'intrusions', action: 'search'},
-    {method: 'get'}) do
-    #search-field-div{class: 'small-10 medium-11'}
-      = text_field_tag :q, params[:q].present? ? params[:q] : nil,
-        tabindex: (@tabindex ? @tabindex+=1 : @tabindex=1),
-        id: 'search-field', placeholder: 'Tags, Description, Author...',
-        class: 'radius prefix'
-    #search-submit-div{class: 'small-2 medium-1'}
-      = submit_tag 'Search', class: 'radius postfix',
-        tabindex: (@tabindex+=1), id: 'search-submit'
+= form_tag({controller: 'intrusions', action: 'search'},
+    {method: 'get', role: 'form', class: 'form-horizontal'}) do
+  .form-group.has-feedback
+    %label.sr-only{for: 'searchField'}= 'Search:'
+    = text_field_tag :q, params[:q].present? ? params[:q] : nil,
+      tabindex: @tabindex ? @tabindex+=1 : @tabindex=1, id: 'searchField',
+      placeholder: 'Search...', class: 'form-control'
+    %span.glyphicon.glyphicon-search.form-control-feedback
