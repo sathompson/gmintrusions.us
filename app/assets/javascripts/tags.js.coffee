@@ -7,7 +7,6 @@ $('#newTagLink').on 'click', (e) ->
   $.ajax
     url: '/tags/new.json'
     success: (data) ->
-      window.mydata = data
       $('#modalBody').html($.parseHTML(data.html))
       $('#tagForm').on 'submit', (e) ->
         e.preventDefault()
@@ -18,9 +17,7 @@ $('#newTagLink').on 'click', (e) ->
           data: $(this).serialize()
           success: (data) ->
             if data.tag
-              # alert data.tag.name + ' successfully created'
               displaySuccesses([data.tag.name + ' successfully created'])
             else
-              # alert data.errors
               displayErrors(data.errors)
       $('#modal').modal('show')
