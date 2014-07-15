@@ -57,7 +57,7 @@ class IntrusionsController < ApplicationController
   private
 
   def render_with_error(action, error_msg)
-    @error_msg = error_msg
+    @error_msgs = error_msg
     render action
   end
 

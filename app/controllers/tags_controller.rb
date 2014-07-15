@@ -11,7 +11,8 @@ class TagsController < ApplicationController
     respond_to do |format|
       format.html
       format.json {
-        render json: { html: render_to_string(partial: 'tag_form', formats: [:html]), s: 's'}
+        render json: {
+          html: render_to_string(partial: 'tag_form', formats: [:html]) }
       }
     end
   end
@@ -42,15 +43,37 @@ class TagsController < ApplicationController
   def create_or_update(method)
     @tag.update(tag_params)
     if @tag.valid?
-      redirect_to @tag
+      respond_to do |format|
+        format.html {
+          redirect_to @tag
+        }
+        format.json {
+          render json: {
+            tag: @tag
+          }
+        }
+      end
     else
-      @form_action = method
-      render_with_error ({create: :new, update: :edit}[method]), @tag
+      respond_to do |format|
+        format.html {
+          @form_action = method
+          render_with_error ({create: :new, update: :edit}[method]), @tag
+        }
+        format.json {
+          render json: {
+            errors: get_errors(@tag)
+          }
+        }
+      end
     end
   end
 
+  def get_errors(tag)
+    tag.errors.map { |_,m| m }
+  end
+
   def render_with_error(action, tag)
-    @error_msg = tag.errors.map { |_,m| m }
+    @error_msgs = get_errors(tag)
     render action
   end
 

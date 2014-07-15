@@ -8,6 +8,19 @@ $('#newTagLink').on 'click', (e) ->
     url: '/tags/new.json'
     success: (data) ->
       window.mydata = data
-      # $('.intrusion-div').first().html data.html
-    error: (data) ->
-      console.debug data
+      $('#modalBody').html($.parseHTML(data.html))
+      $('#tagForm').on 'submit', (e) ->
+        e.preventDefault()
+        $('#modal').modal('hide')
+        $.ajax
+          url: 'tags.json'
+          type: 'POST'
+          data: $(this).serialize()
+          success: (data) ->
+            if data.tag
+              # alert data.tag.name + ' successfully created'
+              displaySuccesses([data.tag.name + ' successfully created'])
+            else
+              # alert data.errors
+              displayErrors(data.errors)
+      $('#modal').modal('show')

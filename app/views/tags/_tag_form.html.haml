@@ -1,7 +1,14 @@
-= form_for @tag, url: {action: @form_action}, html: {role: 'form'} do |f|
+= form_for @tag, url: {action: @form_action},
+    html: {role: 'form', id: 'tagForm'} do |f|
   .panel.panel-primary.tag-panel
-    .panel-heading.text-right.tag-heading
-      = link_to 'delete', @tag, method: :delete, class: 'label label-danger'
+    .panel-heading.tag-heading
+      - if @tag.valid?
+        Edit Tag
+        = link_to 'delete', @tag, method: :delete,
+          class: 'label label-danger pull-right'
+      - else
+        New Tag
+        -# = link_to 'cancel', tags_path, class: 'label label-danger'
     .panel-body
       .form-group
         %label.sr-only{for: 'tagTextField'} Tag Name

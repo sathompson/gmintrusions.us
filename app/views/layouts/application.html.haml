@@ -15,6 +15,17 @@
     = csrf_meta_tag
 
   %body
+    / Modals
+    .modal.fade#modal
+      .modal-dialog
+        .modal-content
+          .modal-header#closeHeading
+            %button.close{type: 'button', :'data-dismiss' => 'modal'}
+              %span{ :'aria-hidden' => true} &times;
+              %span.sr-only Close
+          .modal-body#modalBody
+
+    / Content
     %header
       %nav.navbar.navbar-default{role: 'navigation'}
         .container
@@ -27,23 +38,24 @@
             %li= link_to 'All Tags', tags_path, id: 'tagsLink'
             %li= link_to 'New Intrusion', new_intrusion_path,
               id: 'newIntrusionLink'
-            %li= link_to 'New Tag', new_tag_path, id: 'newTagLink'
+            %li.hidden-sm.hidden-md.hidden-lg= link_to 'New Tag', new_tag_path
+            %li.hidden-xs= link_to 'New Tag', new_tag_path, id: 'newTagLink'
 
     .container#alerts
-      - if @error_msg
-        - @error_msg.each do |msg|
+      - if @error_msgs
+        - @error_msgs.each do |msg|
           .alert.alert-danger= msg
 
-      - if @warning_msg
-        - @warning_msg.each do |msg|
+      - if @warning_msgs
+        - @warning_msgs.each do |msg|
           .alert.alert-warning= msg
 
-      - if @info_msg
-        - @info_msg.each do |msg|
+      - if @info_msgs
+        - @info_msgs.each do |msg|
           .alert.alert-info= msg
 
-      - if @success_msg
-        - @success_msg.each do |msg|
+      - if @success_msgs
+        - @success_msgs.each do |msg|
           .alert.alert-success= msg
 
     .container
