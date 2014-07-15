@@ -1,0 +1,34 @@
+// Place all the styles related to the Tags controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$tag-background-color: #398EB5
+$tag-selected-background-color: #2D7190
+
+.tag
+  font-size: 100%
+  line-height: 2em
+  background-color: $tag-background-color
+
+a.tag.tag:hover
+  background-color: $tag-selected-background-color
+
+.tag-label
+  @extend .tag
+  border: 1px outset
+
+.tag-label:hover
+  cursor: pointer
+
+input:checked + .tag-label
+  border: 1px inset
+  background-color: $tag-selected-background-color
+
+
+.tag-panel
+  border-color: $tag-background-color
+
+.tag-heading.tag-heading
+  @extend %less-padding-heading
+  background-color: $tag-background-color
+  border-color: $tag-background-color

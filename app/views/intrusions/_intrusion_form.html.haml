@@ -1,18 +1,24 @@
-%div{class: 'small-12 row intrusion-div'}
-  = form_for @intrusion, url: {action: @form_action} do |f|
-    .small-12
-      = f.text_area :description, placeholder: 'Your intrusion...',
-        tabindex: (@tabindex ? @tabindex+=1 : @tabindex=1), rows: 3,
-        class: 'intrusion-textarea'
-    .small-12
-      Tags:
-      = f.submit 'Save', class: 'radius, float-right', tabindex: (@tabindex+=1)
-    .small-12
-      %ul
-        - (@tags.sort { |a,b| !( (a_has=a.intrusions.include?(@intrusion)) ^ b.intrusions.include?(@intrusion) ) ? a.name <=> b.name : (a_has ? -1 : 1) }).each do |tag|
-          %li.tag-checkbox-li
+= form_for @intrusion, url: {action: @form_action}, html: {role: 'form'} do |f|
+  .panel.panel-primary
+    .panel-heading.text-right.intrusion-heading
+      = link_to 'delete', @intrusion, method: :delete,
+        class: 'label label-danger'
+    .list-group
+      .list-group-item
+        .form-group
+          %label.sr-only{for: "intrusionTextarea#{@intrusion.id}"}
+            Intrusion Description
+          = f.text_area :description, placeholder: 'Your intrusion...',
+            tabindex: (@tabindex ? @tabindex+=1 : @tabindex=1), rows: 3,
+            id: "intrusionTextarea#{@intrusion.id}",
+            class: 'form-control'
+        .text-right
+          = f.submit 'Save', class: 'btn btn-default', tabindex: (@tabindex+=1)
+      .form-group.list-group-item
+        %p Tags:
+        .list-inline.text-center.tag-list
+          - (@tags.sort { |a,b| !( (a_has=a.intrusions.include?(@intrusion)) ^ b.intrusions.include?(@intrusion) ) ? a.name <=> b.name : (a_has ? -1 : 1) }).each do |tag|
             = check_box_tag "intrusion[tag_ids][]", tag.id,
               @intrusion.tags.include?(tag), tabindex: (@tabindex+=1),
-              class: 'tag-checkbox', id: "intrusion_tag_ids_#{tag.id}"
-            %label.tag-checkbox-label{for: "intrusion_tag_ids_#{tag.id}"}
-              = tag.name
+              id: "tag#{tag.id}", class: 'hidden'
+            %label.label.label-primary.tag-label{for: "tag#{tag.id}"}= tag.name
